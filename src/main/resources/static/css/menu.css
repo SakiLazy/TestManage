@@ -1,0 +1,111 @@
+*{margin: 0;padding: 0;}
+a{text-decoration: none;}
+.main_b{background-color: #f4f4f4;}
+.toolbar{
+    background-color: #333;
+}
+.menu{
+    margin: 0 80px 0 80px;
+    height: 40px;
+    background: gray;
+    font-size: 20px;
+    display: flex;
+    letter-spacing: 12px;
+}
+/* 导航左部分 */
+.menu_l{
+    flex: 1;
+}
+.menu_l ul{
+    height: 100%;
+    padding-left: 20px;
+}
+.menu_l ul>li a{
+    color: oldlace;
+}
+.menu_l ul>li{
+    float: left;
+    line-height: 40px;
+    padding: 0 10px;
+    height: 100%;
+    margin-right: 30px;
+}
+.menu_l ul>li>span:nth-child(2){
+    margin-left: 10px;
+    color: #505050;
+}
+.menu_l ul>li:hover .zi{
+    color: white;
+}
+/* 导航右部分 */
+.munu_r{
+    background-color: blue;
+    flex: 1;
+}
+.menu_r ul>li{
+    float: right;
+    line-height: 40px;
+    padding: 0 30px;
+    height: 100%;
+    background-color: #424242;
+}
+.menu_r ul>li a{
+    color: oldlace;
+}
+
+.menu_r ul>li a:hover{
+    color: white;
+}
+li{
+    text-align: center;
+}
+.menu_r ul>li span{
+    color: lightpink;
+}
+
+.main{
+    position: relative;
+    width: 721px;
+    height: 455px;
+    margin: 100px auto;
+}
+.left,.right{
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    width: 24px;
+    height: 40px;
+    background: rgba(0, 0, 0, .3);
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    font-size: 18px;
+}
+.right{
+    right: 0;
+}
+.circle {
+    position: absolute;
+    bottom: 10px;
+    left: 50px;
+}
+.main ul{
+    width: 1000%;
+}
+.main ul li{
+    float:left;
+}
+
+.circle li {
+    float: left;
+    width: 8px;
+    height: 8px;
+    border: 2px solid orange;
+    margin: 0 3px;
+    border-radius: 50%;
+    /*鼠标经过显示小手*/
+    cursor: pointer;
+}
+.current {
+    background-color: orange;
+}
