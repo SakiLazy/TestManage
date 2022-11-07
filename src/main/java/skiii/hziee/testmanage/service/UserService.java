@@ -23,4 +23,19 @@ public class UserService {
         return userMapper.getAdminInfo(name, password);
     }
 
+    public User ManagerLogin(String name, String password) {
+        return userMapper.getManagerInfo(name, password);
+    }
+
+    public void DeleteUser(Integer id){
+        userMapper.deleteUser(id);
+    }
+
+    public void UpToManager(Integer id){
+        userMapper.UpToManager(id);
+    }
+
+    public void DownToStu(Integer id){
+        userMapper.DownToStu(id);
+    }
 }
