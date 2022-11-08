@@ -39,4 +39,10 @@ public interface UserMapper {
 
     @Update("UPDATE user SET role = 1 WHERE id=#{id}")
     void DownToStu(Integer id);
+
+    @Select("SELECT * FROM user WHERE name = #{name} AND role = 1")
+    List<User> FindUserWithStu(String name);
+
+    @Select("SELECT * FROM user WHERE name = #{name} AND role = 2")
+    List<User> FindUserWithManager(String name);
 }

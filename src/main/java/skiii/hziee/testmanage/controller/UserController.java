@@ -91,4 +91,18 @@ public class UserController {
         userService.DownToStu(id);
         return "redirect:/GotoManageUsers";
     }
+
+    @RequestMapping(value = "/FindUserWithStu")
+    public String finduserwithstu(@Param("name")String name,Model model){
+        List<User> user = userMapper.FindUserWithStu(name);
+        model.addAttribute("alluser", user);
+        return "/Admin/ManageUsers";
+    }
+
+    @RequestMapping(value = "/FindUserWithManager")
+    public String finduserwithmanager(@Param("name")String name,Model model){
+        List<User> userTwo = userMapper.FindUserWithManager(name);
+        model.addAttribute("alluserTwo", userTwo);
+        return "/Admin/ManageUsersTWO";
+    }
 }

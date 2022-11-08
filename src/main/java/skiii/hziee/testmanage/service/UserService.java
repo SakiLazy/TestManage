@@ -38,4 +38,12 @@ public class UserService {
     public void DownToStu(Integer id){
         userMapper.DownToStu(id);
     }
+
+//    public User FindUserWithStu(String name){
+//        return userMapper.FindUserWithStu(name);
+//    }
+//
+//    public User FindUserWithManager(String name){
+//        return userMapper.FindUserWithManager(name);
+//    }
 }
