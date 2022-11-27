@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-public class TestController{
+public class TestController {
 
     @Autowired
     TestMapper testMapper;
@@ -26,8 +26,14 @@ public class TestController{
     TestService testService;
 
     @RequestMapping(value = "/GotoManageTest")
-    public String GotoManageTest(Model model, Integer test_id, String test_name, Integer now_num, Integer max_num, Date begin_time, Date end_time) {
-        List<Test> test = testMapper.findAllTest(test_id,test_name,now_num,max_num,begin_time,end_time);
+    public String GotoManageTest(Model model,
+                                 Integer test_id,
+                                 String test_name,
+                                 Integer now_num,
+                                 Integer max_num,
+                                 Date begin_time,
+                                 Date end_time) {
+        List<Test> test = testMapper.findAllTest(test_id, test_name, now_num, max_num, begin_time, end_time);
         model.addAttribute("all_test", test);
         return "/Manager/ManageTest";
     }
@@ -41,15 +47,28 @@ public class TestController{
     @RequestMapping(value = "/AddNewTest")
     public String AddNewTest(@Param("test_name") String test_name,
                              @Param("max_num") Integer max_num,
-                             @Param("begin_time")String begin_time,
-                             @Param("end_time")String end_time) throws ParseException {
+                             @Param("begin_time") String begin_time,
+                             @Param("end_time") String end_time) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date1 = sdf.parse(begin_time.replace("T"," "));
-        Date date2 = sdf.parse(end_time.replace("T"," "));
+        Date date1 = sdf.parse(begin_time.replace("T", " "));
+        Date date2 = sdf.parse(end_time.replace("T", " "));
 //        String date1 = sdf.format(begin_time);
 //        String date2 = sdf.format(end_time);
-        testMapper.addNewTest(test_name,max_num,date1,date2);
+        testMapper.addNewTest(test_name, max_num, date1, date2);
 //        testMapper.addNewTest(test_name,max_num,begin_time,end_time);
         return "redirect:/GotoManageTest";
+    }
+
+    @RequestMapping(value = "/SearchTest")
+    public String SearchTest(@Param("test_name") String test_name,
+                             Model model,
+                             Integer test_id,
+                             Integer now_num,
+                             Integer max_num,
+                             Date begin_time,
+                             Date end_time) {
+        List<Test> test2 = testMapper.SearchTest(test_id, test_name, now_num, max_num, begin_time, end_time);
+        model.addAttribute("all_test", test2);
+        return "/Manager/ManageTest";
     }
 }

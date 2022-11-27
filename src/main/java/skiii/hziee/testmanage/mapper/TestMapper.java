@@ -19,6 +19,19 @@ public interface TestMapper {
     void deleteTest(Integer test_id);
 
     @Select("select * from test")
-    List<Test> findAllTest(Integer test_id,String test_name,Integer now_num,Integer max_num,Date begin_time,Date end_time);
+    List<Test> findAllTest(Integer test_id,
+                           String test_name,
+                           Integer now_num,
+                           Integer max_num,
+                           Date begin_time,
+                           Date end_time);
+
+    @Select("select * from test where test_name=#{test_name}")
+    List<Test> SearchTest(Integer test_id,
+                          @Param("test_name") String test_name,
+                          Integer now_num,
+                          Integer max_num,
+                          Date begin_time,
+                          Date end_time);
 
 }
