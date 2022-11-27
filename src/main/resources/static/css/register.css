@@ -1,25 +1,6 @@
 body{
     background:url("/static/img/background.jpg");
 }
-#lunkuo{
-    position: absolute;
-    top: 60%;/*顶部到元素*/
-    left:30%;
-    width: 40%;
-    height:500px;
-    margin-top:-300;/*边缘到底部*/
-    background-color: gray;
-    text-align-last: center;
-    filter:alpha(Opacity=60);
-    -moz-opacity:0.9;
-    opacity: 0.9;
-}
-#lunkuo input{
-    font-size: 14px;
-    text-align: center;
-    border-radius: 30px;
-}
-
 input{
     outline-style: none ;
     border: 3px solid #ccc;

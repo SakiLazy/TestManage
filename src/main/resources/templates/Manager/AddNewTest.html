@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>发布考试</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/register.css">
+<style>
+    #lunkuo{
+        position: absolute;
+        top: 60%;/*顶部到元素*/
+        left:30%;
+        width: 40%;
+        height:500px;
+        margin-top:-300px;/*边缘到底部*/
+        background-color: gray;
+        text-align-last: center;
+        filter:alpha(Opacity=60);
+        -moz-opacity:0.9;
+        opacity: 0.9;
+    }
+    #lunkuo input{
+        font-size: 14px;
+        text-align: center;
+        border-radius: 30px;
+    }
+</style>
+</head>
+<div id="lunkuo">
+    <h1>发布考试</h1><br>
+    <form action="/AddNewTest"  method="post">
+        <input type="text" name="test_name" id="test_name"  placeholder="请输入考试名"><br><br>
+        <input type="text" name="max_num" id="max_num" placeholder="请输入最大人数"><br><br>
+        <input type="datetime-local" name="begin_time" id="begin_time" step="1"><br><br>
+        <input type="datetime-local" name="end_time" id="end_time" step="1"><br><br>
+        <input type="submit" value="发布">
+    </form>
+    <br>
+    <form action="/GotoManageTest"  method="post">
+        <input type="submit" value="返回">
+    </form>
+</div>
+</body>
+</html>

@@ -16,7 +16,6 @@ public class JumpController {
         return "/AdminLogin";
     }
 
-
     @RequestMapping(value = "/GotoLoginPage")
     public String GotoLoginPage() {
         return "/Login";
@@ -31,4 +30,15 @@ public class JumpController {
     public String GotoManagerPage() {
         return "/ManagerLogin";
     }
+
+    @RequestMapping(value = "/GotoAddNewTestPage")
+    public String GotoAddNewTestPage(){
+        return "/Manager/AddNewTest";
+    }
+
+    @RequestMapping(value = "/GotoManagerLoginPage")
+    public String GotoManagerLoginPage(){
+        return "/ManagerLogin";
+    }
+
 }

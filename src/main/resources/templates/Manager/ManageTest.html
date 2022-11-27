@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>考试管理系统</title>
+  <script src="/script/jquery-3.6.0.min.js"></script>
+  <script src="/script/base.js"></script>
+  <link href="/css/adminUI.css" rel="stylesheet" />
+  <style>
+    input{
+      outline-style: none ;
+      border: 3px solid #ccc;
+      border-radius: 9px;
+      padding: 10px 10px;
+      width: 100px;
+      font-size: 22px;
+    }
+    input:focus{
+      border-color: #66afe9;
+      outline: 0;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+      box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+    }
+  </style>
+</head>
+<body>
+<div class="top">
+  <div style="float: right;font-size: 30px;padding-top: 15px">
+    <a href="/GotoManagerLoginPage">登出</a>
+  </div>
+</div>
+<ul>
+  <li id="click_1"><a href="/GotoManageTest">考试管理</a></li>
+</ul>
+
+<div style="margin-left:18%;padding:1px 16px;">
+  <h3 style="text-align: center">考试信息</h3>
+  <table>
+    <form action="/GotoAddNewTestPage" method="post">
+      <input type="submit" value="发布考试">
+    </form>
+
+    <tr>
+      <th>ID</th>
+      <th>考试项目</th>
+      <th>当前人数</th>
+      <th>最大人数</th>
+      <th>开始时间</th>
+      <th>结束时间</th>
+      <th>操作</th>
+    </tr>
+
+    <tr th:each="test:${all_test}">
+      <td th:text="${test.test_id}">1</td>
+      <td th:text="${test.test_name}">2</td>
+      <td th:text="${test.now_num}">3</td>
+      <td th:text="${test.max_num}">4</td>
+      <td th:text="${test.begin_time}">5</td>
+      <td th:text="${test.end_time}">6</td>
+      <td>
+<!--        <form action="/UpToManager">-->
+<!--          <input type="submit" th:value="变为考务">-->
+<!--          <input name="id" th:value="${user.id}" type="hidden">-->
+<!--        </form>-->
+
+        <form action="/DeleteTest" method="post">
+          <input type="submit" th:value="删除">
+          <input name="test_id" th:value="${test.test_id}" type="hidden">
+        </form>
+
+      </td>
+
+    </tr>
+  </table>
+  <br>
+</div>
+</body>
+</html>
