@@ -9,11 +9,13 @@ import java.util.List;
 @Mapper
 public interface TestMapper {
 
-    @Insert("insert into test(test_name,max_num,begin_time,end_time)values(#{test_name},#{max_num},#{begin_time},#{end_time})")
+    @Insert("insert into test(test_name,max_num,begin_time,end_time,place,owner)values(#{test_name},#{max_num},#{begin_time},#{end_time},#{place},#{owner})")
     void addNewTest(@Param("test_name") String test_name,
                     @Param("max_num") Integer max_num,
                     @Param("begin_time") Date begin_time,
-                    @Param("end_time") Date end_time);
+                    @Param("end_time") Date end_time,
+                    @Param("place")String place,
+                    @Param("owner")String owner);
 
     @Delete("delete FROM test WHERE test_id=#{test_id}")
     void deleteTest(Integer test_id);
@@ -24,7 +26,9 @@ public interface TestMapper {
                            Integer now_num,
                            Integer max_num,
                            Date begin_time,
-                           Date end_time);
+                           Date end_time,
+                           String place,
+                           String owner);
 
     @Select("select * from test where test_name=#{test_name}")
     List<Test> SearchTest(Integer test_id,
@@ -32,6 +36,8 @@ public interface TestMapper {
                           Integer now_num,
                           Integer max_num,
                           Date begin_time,
-                          Date end_time);
+                          Date end_time,
+                          String place,
+                          String owner);
 
 }

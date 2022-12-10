@@ -45,6 +45,11 @@
       <input type="submit" value="查找">
     </form>
 
+<!--    <form action="/GotoManageTest" method="post">-->
+<!--      <input name="owner" id="owner" type="hidden" th:value="${user_name}">-->
+<!--      <input type="submit" value="仅查看自己">-->
+<!--    </form>-->
+
     <tr>
       <th>ID</th>
       <th>考试项目</th>
@@ -52,6 +57,8 @@
       <th>最大人数</th>
       <th>开始时间</th>
       <th>结束时间</th>
+      <th>考试地点</th>
+      <th>监考人员</th>
       <th>操作</th>
     </tr>
 
@@ -62,6 +69,8 @@
       <td th:text="${test.max_num}">4</td>
       <td th:text="${test.begin_time}">5</td>
       <td th:text="${test.end_time}">6</td>
+      <td th:text="${test.place}">5</td>
+      <td th:text="${test.owner}">6</td>
       <td>
 <!--        <form action="/UpToManager">-->
 <!--          <input type="submit" th:value="变为考务">-->

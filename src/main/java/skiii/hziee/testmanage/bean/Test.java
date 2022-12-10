@@ -6,7 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 @Data
-public class Test{
+public class Test {
 
     private Integer test_id;
     private String test_name;
@@ -17,17 +17,22 @@ public class Test{
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date end_time;
 
+    private String place;
+    private String owner;
+
     public Test() {
 
     }
 
-    public Test(Integer test_id, String test_name, Integer now_num, Integer max_num, Date begin_time, Date end_time) {
+    public Test(Integer test_id, String test_name, Integer now_num, Integer max_num, Date begin_time, Date end_time, String place, String owner) {
         this.test_id = test_id;
         this.test_name = test_name;
         this.now_num = now_num;
         this.max_num = max_num;
         this.begin_time = begin_time;
         this.end_time = end_time;
+        this.place = place;
+        this.owner = owner;
     }
 
     public Integer getTest_id() {
@@ -78,6 +83,21 @@ public class Test{
         this.end_time = end_time;
     }
 
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
     @Override
     public String toString() {
         return "Test{" +
@@ -87,6 +107,8 @@ public class Test{
                 ", max_num=" + max_num +
                 ", begin_time=" + begin_time +
                 ", end_time=" + end_time +
+                ", place='" + place + '\'' +
+                ", owner='" + owner + '\'' +
                 '}';
     }
 }

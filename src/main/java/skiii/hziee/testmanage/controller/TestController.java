@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.yaml.snakeyaml.reader.StreamReader;
 import skiii.hziee.testmanage.bean.Test;
 import skiii.hziee.testmanage.mapper.TestMapper;
 import skiii.hziee.testmanage.service.TestService;
@@ -32,8 +33,10 @@ public class TestController {
                                  Integer now_num,
                                  Integer max_num,
                                  Date begin_time,
-                                 Date end_time) {
-        List<Test> test = testMapper.findAllTest(test_id, test_name, now_num, max_num, begin_time, end_time);
+                                 Date end_time,
+                                 String place,
+                                 String owner) {
+        List<Test> test = testMapper.findAllTest(test_id, test_name, now_num, max_num, begin_time, end_time, place, owner);
         model.addAttribute("all_test", test);
         return "/Manager/ManageTest";
     }
@@ -48,15 +51,23 @@ public class TestController {
     public String AddNewTest(@Param("test_name") String test_name,
                              @Param("max_num") Integer max_num,
                              @Param("begin_time") String begin_time,
-                             @Param("end_time") String end_time) throws ParseException {
+                             @Param("end_time") String end_time,
+                             @Param("place") String place,
+                             @Param("owner") String owner) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date1 = sdf.parse(begin_time.replace("T", " "));
         Date date2 = sdf.parse(end_time.replace("T", " "));
 //        String date1 = sdf.format(begin_time);
 //        String date2 = sdf.format(end_time);
-        testMapper.addNewTest(test_name, max_num, date1, date2);
+        int compareTo = date1.compareTo(date2);
+        if(compareTo < 0){
+            testMapper.addNewTest(test_name, max_num, date1, date2, place, owner);
+            return "redirect:/GotoManageTest";
+        }else {
+            return "/error";
+        }
 //        testMapper.addNewTest(test_name,max_num,begin_time,end_time);
-        return "redirect:/GotoManageTest";
+
     }
 
     @RequestMapping(value = "/SearchTest")
@@ -66,8 +77,10 @@ public class TestController {
                              Integer now_num,
                              Integer max_num,
                              Date begin_time,
-                             Date end_time) {
-        List<Test> test2 = testMapper.SearchTest(test_id, test_name, now_num, max_num, begin_time, end_time);
+                             Date end_time,
+                             String place,
+                             String owner) {
+        List<Test> test2 = testMapper.SearchTest(test_id, test_name, now_num, max_num, begin_time, end_time, place, owner);
         model.addAttribute("all_test", test2);
         return "/Manager/ManageTest";
     }
