@@ -108,7 +108,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/AddNewUser")
-    public String addnewuser(@Param("name")String name,@Param("password")String password){
+    public String addnewuser(@Param("name") String name, @Param("password") String password) {
         userMapper.saveInfo(name, password);
         return "redirect:/GotoManageUsers";
     }
