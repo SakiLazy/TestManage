@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>添加用户</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/css/register.css">
+  <style>
+    #lunkuo{
+      position: absolute;
+      top: 60%;/*顶部到元素*/
+      left:30%;
+      width: 40%;
+      height:500px;
+      margin-top:-300px;/*边缘到底部*/
+      background-color: gray;
+      text-align-last: center;
+      filter:alpha(Opacity=60);
+      -moz-opacity:0.9;
+      opacity: 0.9;
+    }
+    #lunkuo input{
+      font-size: 14px;
+      text-align: center;
+      border-radius: 30px;
+    }
+  </style>
+</head>
+<div id="lunkuo">
+  <h1>发布考试</h1><br>
+  <form action="/AddNewUser"  method="post">
+    <input type="text" name="name" id="name"  placeholder="请输入考生名"><br><br>
+    <input type="text" name="password" id="password" placeholder="请输入考生密码"><br><br>
+    <input type="submit" value="添加">
+  </form>
+  <br>
+  <form action="/GotoManageUsers"  method="post">
+    <input type="submit" value="返回">
+  </form>
+</div>
+</body>
+</html>

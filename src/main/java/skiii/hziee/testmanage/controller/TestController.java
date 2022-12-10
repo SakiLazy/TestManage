@@ -60,10 +60,10 @@ public class TestController {
 //        String date1 = sdf.format(begin_time);
 //        String date2 = sdf.format(end_time);
         int compareTo = date1.compareTo(date2);
-        if(compareTo < 0){
+        if (compareTo < 0) {
             testMapper.addNewTest(test_name, max_num, date1, date2, place, owner);
             return "redirect:/GotoManageTest";
-        }else {
+        } else {
             return "/error";
         }
 //        testMapper.addNewTest(test_name,max_num,begin_time,end_time);

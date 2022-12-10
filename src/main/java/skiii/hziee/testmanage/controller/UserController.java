@@ -1,5 +1,6 @@
 package skiii.hziee.testmanage.controller;
 
+import jdk.nashorn.internal.ir.CallNode;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -93,16 +94,22 @@ public class UserController {
     }
 
     @RequestMapping(value = "/FindUserWithStu")
-    public String finduserwithstu(@Param("name")String name,Model model){
+    public String finduserwithstu(@Param("name") String name, Model model) {
         List<User> user = userMapper.FindUserWithStu(name);
         model.addAttribute("alluser", user);
         return "/Admin/ManageUsers";
     }
 
     @RequestMapping(value = "/FindUserWithManager")
-    public String finduserwithmanager(@Param("name")String name,Model model){
+    public String finduserwithmanager(@Param("name") String name, Model model) {
         List<User> userTwo = userMapper.FindUserWithManager(name);
         model.addAttribute("alluserTwo", userTwo);
         return "/Admin/ManageUsersTWO";
+    }
+
+    @RequestMapping(value = "/AddNewUser")
+    public String addnewuser(@Param("name")String name,@Param("password")String password){
+        userMapper.saveInfo(name, password);
+        return "redirect:/GotoManageUsers";
     }
 }
