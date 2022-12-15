@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : clx
-Source Server Version : 50525
+Source Server         : 123
+Source Server Version : 50534
 Source Host           : localhost:3306
 Source Database       : testm
 
 Target Server Type    : MYSQL
-Target Server Version : 50525
+Target Server Version : 50534
 File Encoding         : 65001
 
-Date: 2022-12-15 13:52:31
+Date: 2022-12-15 23:50:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -50,6 +50,21 @@ CREATE TABLE `examination_registration` (
 -- Records of examination_registration
 -- ----------------------------
 INSERT INTO `examination_registration` VALUES ('1', '语文', '2', '32', '1', '25', '111', '13211112222', '2022-12-15 13:45:13');
+
+-- ----------------------------
+-- Table structure for permissions
+-- ----------------------------
+DROP TABLE IF EXISTS `permissions`;
+CREATE TABLE `permissions` (
+  `name` varchar(255) NOT NULL DEFAULT '1',
+  `state` int(10) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of permissions
+-- ----------------------------
+INSERT INTO `permissions` VALUES ('addnewTest', '1');
+INSERT INTO `permissions` VALUES ('manageTest', '0');
 
 -- ----------------------------
 -- Table structure for test
