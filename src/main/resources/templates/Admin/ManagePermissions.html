@@ -37,35 +37,24 @@
 
 
 <div style="margin-left:18%;padding:1px 16px;">
-  <h3 style="text-align: center">个人信息</h3>
+  <h3 style="text-align: center">当前权限信息 1为允许 0为不允许</h3>
   <table>
-    <form action="/FindUserWithStu" method="post">
-      <input name="name" id="name" placeholder="输入学生姓名">
-      <input type="submit" value="查找">
-    </form>
-
-    <form action="/GotoAddNewUser" method="post">
-      <input type="submit" value="增加用户">
-    </form>
-
     <tr>
-      <th>用户ID</th>
-      <th>用户姓名</th>
-      <th>用户密码</th>
+      <th>权限名称</th>
+      <th>权限状态</th>
       <th>操作</th>
     </tr>
-    <tr th:each="user:${alluser}">
-      <td th:text="${user.id}">1</td>
-      <td th:text="${user.name}">2</td>
-      <td th:text="${user.password}">3</td>
+    <tr th:each="permissions:${allpermissions}">
+      <td th:text="${permissions.name}">1</td>
+      <td th:text="${permissions.state}">2</td>
       <td>
-        <form action="/UpToManager">
-          <input type="submit" th:value="变为考务">
-          <input name="id" th:value="${user.id}" type="hidden">
+        <form action="/Accept">
+          <input type="submit" th:value="允许">
+          <input type="hidden" name="name" th:value="${permissions.name}">
         </form>
-        <form action="/DeleteUser" method="post">
-          <input type="submit" th:value="删除">
-          <input name="id" th:value="${user.id}" type="hidden">
+        <form action="/Deny">
+          <input type="submit" th:value="拒绝">
+          <input type="hidden" name="name" th:value="${permissions.name}">
         </form>
       </td>
     </tr>

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.yaml.snakeyaml.reader.StreamReader;
 import skiii.hziee.testmanage.bean.Test;
+import skiii.hziee.testmanage.mapper.PermissionsMapper;
 import skiii.hziee.testmanage.mapper.TestMapper;
 import skiii.hziee.testmanage.service.TestService;
 
@@ -20,11 +21,18 @@ import java.util.List;
 @Controller
 public class TestController {
 
+    final String manageTest = "manageTest";
+    final String addnewTest = "addnewTest";
+    final Integer juststate = 0;
+
     @Autowired
     TestMapper testMapper;
 
     @Autowired
     TestService testService;
+
+    @Autowired
+    PermissionsMapper permissionsMapper;
 
     @RequestMapping(value = "/GotoManageTest")
     public String GotoManageTest(Model model,
@@ -36,9 +44,15 @@ public class TestController {
                                  Date end_time,
                                  String place,
                                  String owner) {
-        List<Test> test = testMapper.findAllTest(test_id, test_name, now_num, max_num, begin_time, end_time, place, owner);
-        model.addAttribute("all_test", test);
-        return "/Manager/ManageTest";
+        int p_now_state = permissionsMapper.p_now_state(manageTest,juststate).getState();
+        if(p_now_state == 1){
+            List<Test> test = testMapper.findAllTest(test_id, test_name, now_num, max_num, begin_time, end_time, place, owner);
+            model.addAttribute("all_test", test);
+            return "/Manager/ManageTest";
+        } else {
+            return "/nopermissions";
+        }
+
     }
 
     @RequestMapping(value = "/DeleteTest")
@@ -54,19 +68,25 @@ public class TestController {
                              @Param("end_time") String end_time,
                              @Param("place") String place,
                              @Param("owner") String owner) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date1 = sdf.parse(begin_time.replace("T", " "));
-        Date date2 = sdf.parse(end_time.replace("T", " "));
+        int p_now_state = permissionsMapper.p_now_state(addnewTest,juststate).getState();
+        if(p_now_state == 1){
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date1 = sdf.parse(begin_time.replace("T", " "));
+            Date date2 = sdf.parse(end_time.replace("T", " "));
 //        String date1 = sdf.format(begin_time);
 //        String date2 = sdf.format(end_time);
-        int compareTo = date1.compareTo(date2);
-        if (compareTo < 0) {
-            testMapper.addNewTest(test_name, max_num, date1, date2, place, owner);
-            return "redirect:/GotoManageTest";
-        } else {
-            return "/error";
-        }
+            int compareTo = date1.compareTo(date2);
+            if (compareTo < 0) {
+                testMapper.addNewTest(test_name, max_num, date1, date2, place, owner);
+                return "redirect:/GotoManageTest";
+            } else {
+                return "/error";
+            }
 //        testMapper.addNewTest(test_name,max_num,begin_time,end_time);
+        } else {
+            return "/nopermissions";
+        }
+
 
     }
 
