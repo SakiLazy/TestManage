@@ -54,6 +54,8 @@ public class UserController {
     @RequestMapping(value = "/ManagerloginIn", method = RequestMethod.POST)
     public String Managerlogin(String name, String password, Model model) {
         User user = userService.ManagerLogin(name, password);
+        String nowname = userService.ManagerLogin(name, password).getName();
+        model.addAttribute("now_manage_user",nowname);
         if (user != null) {
             return "/Manager/ManagerIndex";
         } else {

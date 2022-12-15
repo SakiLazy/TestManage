@@ -32,12 +32,15 @@
 
 <ul>
       <li id="click_1"><a href="/GotoManageTest" >考试管理</a>
-<!--      <input type="hidden" id="owner" name="owner" th:value="${user_name}">-->
       </li>
 </ul>
 
 <div style="margin-left:18%;padding:1px 16px;">
   <h2>欢迎使用考试管理系统</h2>
+  <form action="/OnlyLookSelf" method="post">
+    <input type="submit" value="查看安排">
+    <input id="owner" name="owner"  th:value="${now_manage_user}" type="hidden">
+  </form>
 </div>
 </body>
 </html>

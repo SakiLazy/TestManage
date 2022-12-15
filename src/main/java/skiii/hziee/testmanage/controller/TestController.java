@@ -86,8 +86,6 @@ public class TestController {
         } else {
             return "/nopermissions";
         }
-
-
     }
 
     @RequestMapping(value = "/SearchTest")
@@ -102,6 +100,21 @@ public class TestController {
                              String owner) {
         List<Test> test2 = testMapper.SearchTest(test_id, test_name, now_num, max_num, begin_time, end_time, place, owner);
         model.addAttribute("all_test", test2);
+        return "/Manager/ManageTest";
+    }
+
+    @RequestMapping("/OnlyLookSelf")
+    public String OnlyLookSelf(String test_name,
+                               Model model,
+                               Integer test_id,
+                               Integer now_num,
+                               Integer max_num,
+                               Date begin_time,
+                               Date end_time,
+                               String place,
+                               @Param("owner") String owner){
+        List<Test> test3 = testMapper.MyTest(test_id, test_name, now_num, max_num, begin_time, end_time, place, owner);
+        model.addAttribute("all_test", test3);
         return "/Manager/ManageTest";
     }
 }

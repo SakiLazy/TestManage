@@ -14,8 +14,8 @@ public interface TestMapper {
                     @Param("max_num") Integer max_num,
                     @Param("begin_time") Date begin_time,
                     @Param("end_time") Date end_time,
-                    @Param("place")String place,
-                    @Param("owner")String owner);
+                    @Param("place") String place,
+                    @Param("owner") String owner);
 
     @Delete("delete FROM test WHERE test_id=#{test_id}")
     void deleteTest(Integer test_id);
@@ -40,4 +40,13 @@ public interface TestMapper {
                           String place,
                           String owner);
 
+    @Select("select * from test where owner=#{owner}")
+    List<Test> MyTest(Integer test_id,
+                      String test_name,
+                      Integer now_num,
+                      Integer max_num,
+                      Date begin_time,
+                      Date end_time,
+                      String place,
+                      @Param("owner") String owner);
 }
