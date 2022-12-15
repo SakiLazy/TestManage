@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 123
-Source Server Version : 50534
+Source Server         : clx
+Source Server Version : 50525
 Source Host           : localhost:3306
 Source Database       : testm
 
 Target Server Type    : MYSQL
-Target Server Version : 50534
+Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2022-12-10 21:24:23
+Date: 2022-12-15 13:52:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,6 +28,28 @@ CREATE TABLE `adminuser` (
 -- Records of adminuser
 -- ----------------------------
 INSERT INTO `adminuser` VALUES ('skiii', '123123');
+
+-- ----------------------------
+-- Table structure for examination_registration
+-- ----------------------------
+DROP TABLE IF EXISTS `examination_registration`;
+CREATE TABLE `examination_registration` (
+  `examination_registration_id` int(11) NOT NULL AUTO_INCREMENT,
+  `test_name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `user_num` int(11) DEFAULT '0',
+  `registration_num` int(11) NOT NULL,
+  `test_id` int(11) NOT NULL,
+  `examination_free` varchar(64) NOT NULL,
+  `full_name` varchar(64) NOT NULL,
+  `contact_number` varchar(64) NOT NULL,
+  `create_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`examination_registration_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of examination_registration
+-- ----------------------------
+INSERT INTO `examination_registration` VALUES ('1', '语文', '2', '32', '1', '25', '111', '13211112222', '2022-12-15 13:45:13');
 
 -- ----------------------------
 -- Table structure for test
