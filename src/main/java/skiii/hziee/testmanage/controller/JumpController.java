@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class JumpController {
-
+    
     @RequestMapping("/")
     public String Welcome() {
         return "/Login";
@@ -18,7 +18,7 @@ public class JumpController {
 
     @RequestMapping(value = "/GotoLoginPage")
     public String GotoLoginPage() {
-        return "/Login";
+        return "Login";
     }
 
     @RequestMapping(value = "/GotoRegisterPage")
@@ -46,3 +46,4 @@ public class JumpController {
         return "/Admin/AddNewUser";
     }
 }
+

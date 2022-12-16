@@ -1,6 +1,5 @@
 package skiii.hziee.testmanage.controller;
 
-import jdk.nashorn.internal.ir.CallNode;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,9 +27,9 @@ public class UserController {
         User user = userService.LoginIn(name, password);
         model.addAttribute("user_name", name);
         if (user != null) {
-            return "Index";
+            return "/Index";
         } else {
-            return "error";
+            return "/error";
         }
     }
 
@@ -40,7 +39,7 @@ public class UserController {
         if (admin != null) {
             return "/Admin/AdminIndex";
         } else {
-            return "error";
+            return "/error";
         }
     }
 
@@ -48,7 +47,7 @@ public class UserController {
     public String Register(String name, String password, Model model) {
         userService.Insert(name, password);
         model.addAttribute("user_name", name);
-        return "/Index";
+        return "/Login";
     }
 
     @RequestMapping(value = "/ManagerloginIn", method = RequestMethod.POST)
@@ -59,7 +58,7 @@ public class UserController {
         if (user != null) {
             return "/Manager/ManagerIndex";
         } else {
-            return "error";
+            return "/error";
         }
     }
 
@@ -74,7 +73,7 @@ public class UserController {
     public String GotoManageUserTwo(Model model) {
         List<User> userTwo = userMapper.findAllUserTwo();
         model.addAttribute("alluserTwo", userTwo);
-        return "/Admin/ManageUsersTWO";
+        return "/Admin/ManageUsersTwo";
     }
 
     @RequestMapping(value = "/DeleteUser")
