@@ -60,10 +60,10 @@
 
     <div class="left">
         <ul class="leftUI">
-            <li id="click_1"><a href="">我的考试</a></li>
-            <li id="click_2"><a href="">考试报名</a></li>
-            <li id="click_3"><a href="">信箱</a></li>
-            <li id="click_4"><a href="">生成准考证</a></li>
+            <li id="click_1"><a href="/MyTest">我的考试</a></li>
+            <li id="click_2"><a href="/GotoJoinTest">考试报名</a></li>
+            <li id="click_3"><a href="/MyEmail">信箱</a></li>
+            <li id="click_4"><a href="/Print">生成准考证</a></li>
         </ul>
     </div>
 
@@ -95,20 +95,18 @@
                     <th>操作</th>
                 </tr>
             </thead>
-
-
-            <tr th:each="">
-                <td th:text="">1</td>
-                <td th:text="">2</td>
-                <td th:text="">3</td>
-                <td th:text="">4</td>
-                <td th:text="">5</td>
+            <tr >
+                <td >1</td>
+                <td >2</td>
+                <td >3</td>
+                <td >4</td>
+                <td >5</td>
 
 
                 <td>
                     <form action="" method="post">
                         <input type="submit" value="打印">
-                        <input name="" th:value="" type="hidden">
+                        <input name="" type="hidden">
                     </form>
 
                 </td>
@@ -116,8 +114,6 @@
         </table>
         <br>
     </div>
-
-
     <div class="copyright">&copy;2022 - <strong>TestManage</strong></div>
 </body>
 
