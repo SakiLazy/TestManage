@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/css/cck.css">
     <link rel="stylesheet" href="/css/simple.css">
 
-
     <title>首页</title>
     <style>
         ul {
@@ -17,7 +16,6 @@
             margin: 0;
             list-style-type: none;
         }
-
         input {
             outline-style: none;
             border: 3px solid #ccc;
@@ -50,7 +48,6 @@
             <div class="menu_r">
                 <ul>
                     <li>
-                        <a th:text="${user_name}" style="letter-spacing: normal">1</a>
                         <a href="/" style="letter-spacing: normal;">登出</a>
                     </li>
                 </ul>
@@ -58,16 +55,12 @@
         </div>
     </div>
 
-
     <div class="left">
         <ul class="leftUI">
-            <li id="click_1"><a href="">被分调情况</a></li>
-            <li id="click_2"><a href="">考试报名</a></li>
-            <li id="click_3"><a href="">信箱</a></li>
-            <li id="click_4"><a href="">生成准考证</a></li>
+            <li id="click_1"><a href="/GotoManageTest">考试管理</a></li>
+            <li id="click_2"><a href="/GotoMail">信箱</a></li>
         </ul>
     </div>
-
 
     <div style="margin-left:140px;" class="navChild">
         <a>收到通知</a>
@@ -75,34 +68,27 @@
     </div>
     <div style="margin-left:140px;" class="main">
 
-
         <table style="width: 100%;">
 
+            <tr>
+                <td >用户名</td>
+                <td >内容</td>
+                <td>操作</td>
+            </tr>
 
-
-
-            <!--    <form action="/GotoManageTest" method="post">-->
-            <!--      <input name="owner" id="owner" type="hidden" th:value="${user_name}">-->
-            <!--      <input type="submit" value="仅查看自己">-->
-            <!--    </form>-->
-
-            <tr th:each="">
-                <td th:text="">用户名</td>
-                <td th:text="">内容</td>
+            <tr >
+                <td></td>
+                <td></td>
                 <td>
                     <form action="" method="post">
                         <input type="submit" value="查看">
-                        <input name="test_id" th:value="" type="hidden">
+                        <input name="test_id" type="hidden">
                     </form>
                     <form action="" method="post">
                         <input type="submit" value="删除">
-                        <input name="test_id" th:value="" type="hidden">
+                        <input name="test_id" type="hidden">
                     </form>
-
                 </td>
-
-
-
             </tr>
         </table>
         <br>

@@ -45,5 +45,10 @@ public class JumpController {
     public String GotoAddNewUser() {
         return "/Admin/AddNewUser";
     }
+
+    @RequestMapping(value = "/GotoMail")
+    public String GotoMail() {
+        return "/Manager/teachEmail";
+    }
 }
 
