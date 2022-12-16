@@ -51,7 +51,7 @@ public class UserController {
                                  String owner) {
         List<Test> test = testMapper.findAllTest(test_id, test_name, now_num, max_num, begin_time, end_time, place, owner);
         model.addAttribute("all_test", test);
-        return "/Student/JoinTest";
+        return "/Student/StuJoinTest";
 
     }
 
