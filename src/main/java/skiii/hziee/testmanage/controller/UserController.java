@@ -7,10 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import skiii.hziee.testmanage.bean.Admin;
+import skiii.hziee.testmanage.bean.Test;
 import skiii.hziee.testmanage.bean.User;
+import skiii.hziee.testmanage.mapper.TestMapper;
 import skiii.hziee.testmanage.mapper.UserMapper;
 import skiii.hziee.testmanage.service.UserService;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -22,15 +25,34 @@ public class UserController {
     @Autowired
     UserMapper userMapper;
 
+    @Autowired
+    TestMapper testMapper;
+
     @RequestMapping(value = "/loginIn", method = RequestMethod.POST)
     public String login(String name, String password, Model model) {
         User user = userService.LoginIn(name, password);
         model.addAttribute("user_name", name);
         if (user != null) {
-            return "/Index";
+            return "redirect:/GotoJoinTest";
         } else {
             return "/error";
         }
+    }
+
+    @RequestMapping(value = "/GotoJoinTest")
+    public String GotoJoinTest(Model model,
+                                 Integer test_id,
+                                 String test_name,
+                                 Integer now_num,
+                                 Integer max_num,
+                                 Date begin_time,
+                                 Date end_time,
+                                 String place,
+                                 String owner) {
+        List<Test> test = testMapper.findAllTest(test_id, test_name, now_num, max_num, begin_time, end_time, place, owner);
+        model.addAttribute("all_test", test);
+        return "/Student/JoinTest";
+
     }
 
     @RequestMapping(value = "/AdminloginIn", method = RequestMethod.POST)
