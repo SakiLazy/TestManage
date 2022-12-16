@@ -50,5 +50,20 @@ public class JumpController {
     public String GotoMail() {
         return "/Manager/teachEmail";
     }
+
+    @RequestMapping(value = "/MyTest")
+    public String Mytest(){
+        return "/Student/StuMyTest";
+    }
+
+    @RequestMapping(value = "/MyEmail")
+    public String MyEmail(){
+        return "/Student/StuSendEmail";
+    }
+
+    @RequestMapping(value = "/Print")
+    public String Print(){
+        return "/Student/StuPrint";
+    }
 }
 
