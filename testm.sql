@@ -12,7 +12,6 @@ File Encoding         : 65001
 
 Date: 2022-12-17 15:47:16
 */
-
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
