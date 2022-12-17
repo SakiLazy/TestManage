@@ -40,6 +40,7 @@ public interface TestMapper {
                           String place,
                           String owner);
 
+
     @Select("select * from test where owner=#{owner}")
     List<Test> MyTest(Integer test_id,
                       String test_name,
