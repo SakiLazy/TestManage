@@ -65,5 +65,9 @@ public class JumpController {
     public String Print(){
         return "/Student/StuPrint";
     }
+    @RequestMapping(value = "/MyTast")
+    public String MyTast(){
+        return "/Student/StuMyTast";
+    }
 }
 
