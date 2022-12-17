@@ -10,7 +10,7 @@
     </parent>
     <groupId>skiii.hziee</groupId>
     <artifactId>TestManage</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
     <name>TestManage</name>
     <description>TestManage</description>
     <packaging>war</packaging>
