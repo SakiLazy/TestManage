@@ -1,18 +1,17 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 123
-Source Server Version : 50534
+Source Server         : clx
+Source Server Version : 50525
 Source Host           : localhost:3306
 Source Database       : testm
 
 Target Server Type    : MYSQL
-Target Server Version : 50534
+Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2022-12-15 23:50:30
+Date: 2022-12-17 15:47:16
 */
-
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
@@ -30,26 +29,26 @@ CREATE TABLE `adminuser` (
 INSERT INTO `adminuser` VALUES ('skiii', '123123');
 
 -- ----------------------------
--- Table structure for examination_registration
+-- Table structure for examination_reg
 -- ----------------------------
-DROP TABLE IF EXISTS `examination_registration`;
-CREATE TABLE `examination_registration` (
-  `examination_registration_id` int(11) NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `examination_reg`;
+CREATE TABLE `examination_reg` (
+  `id` int(10) NOT NULL,
+  `test_id` int(11) NOT NULL AUTO_INCREMENT,
   `test_name` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `user_num` int(11) DEFAULT '0',
-  `registration_num` int(11) NOT NULL,
-  `test_id` int(11) NOT NULL,
-  `examination_free` varchar(64) NOT NULL,
-  `full_name` varchar(64) NOT NULL,
-  `contact_number` varchar(64) NOT NULL,
-  `create_time` datetime DEFAULT NULL,
-  PRIMARY KEY (`examination_registration_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `now_num` int(11) DEFAULT '0',
+  `max_num` int(11) NOT NULL,
+  `begin_time` datetime NOT NULL,
+  `end_time` datetime NOT NULL,
+  `place` varchar(255) NOT NULL,
+  `owner` varchar(255) NOT NULL,
+  PRIMARY KEY (`test_id`,`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Records of examination_registration
+-- Records of examination_reg
 -- ----------------------------
-INSERT INTO `examination_registration` VALUES ('1', '语文', '2', '32', '1', '25', '111', '13211112222', '2022-12-15 13:45:13');
+INSERT INTO `examination_reg` VALUES ('1', '2', '计算机', '1', '50', '2022-11-27 00:00:00', '2022-11-28 00:00:00', 'E302', 'asd');
 
 -- ----------------------------
 -- Table structure for permissions
@@ -64,7 +63,7 @@ CREATE TABLE `permissions` (
 -- Records of permissions
 -- ----------------------------
 INSERT INTO `permissions` VALUES ('addnewTest', '1');
-INSERT INTO `permissions` VALUES ('manageTest', '0');
+INSERT INTO `permissions` VALUES ('manageTest', '1');
 
 -- ----------------------------
 -- Table structure for test
@@ -86,7 +85,6 @@ CREATE TABLE `test` (
 -- Records of test
 -- ----------------------------
 INSERT INTO `test` VALUES ('2', '计算机', '1', '50', '2022-11-27 00:00:00', '2022-11-28 00:00:00', 'E302', 'asd');
-INSERT INTO `test` VALUES ('3', '高数', '0', '35', '2022-11-26 00:00:00', '2022-11-27 00:00:00', 'E101', 'asd');
 INSERT INTO `test` VALUES ('5', '离散数学', '0', '50', '2022-11-27 20:04:20', '2022-11-27 22:05:23', 'C201', 'awfe');
 INSERT INTO `test` VALUES ('6', '线性代数', '0', '35', '2022-12-10 20:54:40', '2022-12-11 20:54:44', 'E211', 'awfe');
 

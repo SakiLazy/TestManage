@@ -33,7 +33,38 @@
       -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
       box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
     }
+
+    #lunkuo {
+      /* position: absolute;  */
+      top: 300px;
+      /*顶部到元素*/
+      left: 40%;
+      width: 40%;
+      height: 500px;
+      margin: 30px 0;
+      /*边缘到底部*/
+      background-color: gray;
+      text-align-last: center;
+      filter: alpha(Opacity=60);
+      -moz-opacity: 0.9;
+      opacity: 0.9;
+    }
+
+    #lunkuo input {
+      font-size: 14px;
+      text-align: center;
+      border-radius: 30px;
+    }
   </style>
+  <script >
+    function del(type){
+      $(type).parent().remove();
+    }
+
+    }
+
+  </script>
+
 </head>
 
 <body>
@@ -80,9 +111,6 @@
 
     </div>
 
-
-
-
     <!--    <form action="/GotoManageTest" method="post">-->
     <!--      <input name="owner" id="owner" type="hidden" th:value="${user_name}">-->
     <!--      <input type="submit" value="仅查看自己">-->
@@ -100,24 +128,22 @@
       <th>操作</th>
     </tr>
 
-    <tr th:each="test:${all_test}">
-      <td th:text="${test.test_id}">1</td>
-      <td th:text="${test.test_name}">2</td>
-      <td th:text="${test.now_num}">3</td>
-      <td th:text="${test.max_num}">4</td>
-      <td th:text="${test.begin_time}">5</td>
-      <td th:text="${test.end_time}">6</td>
-      <td th:text="${test.place}">5</td>
-      <td th:text="${test.owner}">6</td>
+    <tr>
+      <td>2</td>
+      <td>计算机</td>
+      <td>1</td>
+      <td>50</td>
+      <td>Sun Nov 27 00:00:00 CST 2022</td>
+      <td>Mon Nov 28 00:00:00 CST 2022</td>
+      <td>E302</td>
+      <td>asd</td>
       <td>
-        <form action="" method="post">
-          <input type="submit" value="考试详情">
-          <input name="test_id" th:value="${test.test_id}" type="hidden">
+
+        <form action="/MyTast" method="post">
+          <input type="submit" value="取消报名">
+          <input  type="hidden">
         </form>
-        <form action="" method="post">
-          <input type="submit" value="退考">
-          
-        </form>
+      </a>
       </td>
     </tr>
     </table>
