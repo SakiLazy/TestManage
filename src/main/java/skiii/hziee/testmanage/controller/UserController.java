@@ -32,7 +32,8 @@ public class UserController {
     public String login(String name, String password, Model model) {
         User user = userService.LoginIn(name, password);
         model.addAttribute("user_name", name);
-        if (user != null) {
+        int roles = user.getRole();
+        if (roles == 1) {
             return "redirect:/GotoJoinTest";
         } else {
             return "/error";
@@ -76,8 +77,9 @@ public class UserController {
     public String Managerlogin(String name, String password, Model model) {
         User user = userService.ManagerLogin(name, password);
         String nowname = userService.ManagerLogin(name, password).getName();
-        model.addAttribute("now_manage_user",nowname);
-        if (user != null) {
+        model.addAttribute("now_manage_user", nowname);
+        int roles = user.getRole();
+        if (roles == 2) {
             return "/Manager/ManagerIndex";
         } else {
             return "/error";
