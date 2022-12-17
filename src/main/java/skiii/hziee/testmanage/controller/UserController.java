@@ -126,10 +126,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "/FindUserWithManager")
-    public String finduserwithmanager(@Param("name") String name, Model model) {
+    public String finduserwithmanagername(@Param("name") String name, Model model) {
         List<User> userTwo = userMapper.FindUserWithManager(name);
-        model.addAttribute("alluserTwo", userTwo);
-        return "/Admin/ManageUsersTWO";
+        model.addAttribute("alluserTwos", userTwo);
+        return "/Admin/ManageUsersTwo";
     }
 
     @RequestMapping(value = "/AddNewUser")

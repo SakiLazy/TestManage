@@ -64,6 +64,21 @@
 <!--        </form>-->
       </td>
     </tr>
+    <tr th:each="usert:${alluserTwos}">
+      <td th:text="${usert.id}">1</td>
+      <td th:text="${usert.name}">2</td>
+      <td th:text="${usert.password}">3</td>
+      <td>
+        <form action="/DownToStu">
+          <input type="submit" th:value="变为学生">
+          <input name="id" th:value="${usert.id}" type="hidden">
+        </form>
+        <!--        <form action="/DeleteUser" method="post">-->
+        <!--          <input name="id" id="id" placeholder="输入要删除的用户名">-->
+        <!--          <input type="submit" value="删除">-->
+        <!--        </form>-->
+      </td>
+    </tr>
   </table>
   <br>
 </div>
